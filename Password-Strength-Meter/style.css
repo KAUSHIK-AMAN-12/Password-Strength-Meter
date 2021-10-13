@@ -1,0 +1,67 @@
+ /* --> to select all elements */
+
+* , *::after , *::before{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #783c00;
+    color : white;
+    text-align: center;
+}
+/* strength meter is actually an div */
+.Strength-meter{
+    position: relative;
+    height : 2rem;
+    width : 90%;
+    border : 3px solid black;
+    border-radius: 1rem;
+    margin : 10px auto ; 
+    overflow: hidden;
+}
+/* we need to convert var value into percentage for width */
+/* width = 100% means the width of bar filling div going to wide */
+/* calc(1% * var(--strength , 0)); here 0 is the default value  */
+
+.Strength-meter::before{
+    content : '';
+    position: absolute;
+    left : 0;
+    height : 100%;
+    width : calc(1% * var(--strength, 0));  
+    /* how to set value in css file --> strengthMeter.style.setProperty('--strength' , strength) */     
+    
+    background-color : red;
+    transition : width 200ms;
+}
+
+.password-input{
+    width : 90%;
+    padding : .25rem .75rem;
+    background-color: gray;
+    color : white;
+    border : 1px solid black;
+    font-weight: normal;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    outline : none;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.password-input:focus{
+    border: 2px solid rgb(17, 3, 43);
+}
+
+/* styling for all reasons text */
+
+.reasons > * {
+margin-top: .5rem;
+color : red;
+display : inline
+}
+
+
+.reasons::before {
+    content :'your password must have  : '
+}
